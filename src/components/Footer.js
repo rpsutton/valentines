@@ -18,7 +18,7 @@ function Footer(props) {
         <div className="FooterComponent__inner">
           <div className="brand left">
             <Link to="/" className="text-light">
-              Made with love by Pip ❤️
+              Made with love by Pip <span role="img" aria-label="heart emoji"> ❤️ </span>
             </Link>
           </div>
           <div className="social right">

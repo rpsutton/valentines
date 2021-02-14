@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import AdviceDisplay from "./../components/AdviceDisplay";
-import NewsletterSection from "./../components/NewsletterSection";
 import Footer from "./../components/Footer";
 
 function getWindowDimensions() {
@@ -27,7 +26,7 @@ function useWindowDimensions() {
 }
 
 function IndexPage(props) {
-  const { height, width } = useWindowDimensions();
+  const { height } = useWindowDimensions();
   var dateObject = new Date();
   var curentYear = dateObject.getFullYear();
   return (
