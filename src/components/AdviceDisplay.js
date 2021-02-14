@@ -26,6 +26,7 @@ function HeroSection(props) {
   const [quote, setQuote] = useState(quotes[generateRandomNumber(quotesLength)]);
   const [background, setBackground] = useState(backgrounds[generateRandomNumber(backgroundsLength)]);
   const [countdown, setCountdown] = useState(false);
+  console.log(background);
   
   return (
     <DisplaySection
