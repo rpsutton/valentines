@@ -1,9 +1,32 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import AdviceDisplay from "./../components/AdviceDisplay";
-import HeroSection from './../components/HeroSection';
 import Footer from "./../components/Footer";
 
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height
+  };
+}
+
+function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowDimensions;
+}
+
 function IndexPage(props) {
+  const { height} = useWindowDimensions();
   var dateObject = new Date();
   var curentYear = dateObject.getFullYear();
   return (
@@ -11,12 +34,8 @@ function IndexPage(props) {
       <AdviceDisplay
         bg="pink"
         textColor="light"
-        buttonColor="primary"
-      />
-      <HeroSection 
-        bg="pink"
-        textColor="light"
-        title="I love you baby!"
+        buttonColor="lavender"
+        height={height}
       />
       <Footer
         bg="lavender"

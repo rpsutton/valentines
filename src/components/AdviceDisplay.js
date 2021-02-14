@@ -1,80 +1,103 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Container from "react-bootstrap/Container";
 import SectionHeader from "./SectionHeader";
 import Button from "react-bootstrap/Button";
 import DisplaySection from "./DisplaySection";
 import { backgrounds } from "../styles/backgrounds";
-import { quotes } from '../components/quotes';
+import Spinner from "react-bootstrap/Spinner";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
-let quotesLength = quotes.length;
-let backgroundsLength = backgrounds.length;
+const API_URL = "https://api.adviceslip.com/advice";
+
+function get(url) {
+  return fetch(url)
+    .then(resp => resp.json())
+}
+const API = { get }
+
+function generateRandomNumber(num) {
+  return Math.floor(Math.random() * Math.floor(num));
+}
 
 function HeroSection(props) {
 
-  function generateRandomNumber(num) {
-    return Math.floor(Math.random() * Math.floor(num));
-  }
-
-  const getQuotes = () => {
-    let quoteIndex = generateRandomNumber(quotesLength);
-    let bgIndex = generateRandomNumber(backgroundsLength);
-    setQuote(quotes[quoteIndex]);
-    setBackground(backgrounds[bgIndex]);
-  }
-
-  const [quote, setQuote] = useState(quotes[generateRandomNumber(quotesLength)]);
-  const [background, setBackground] = useState(backgrounds[generateRandomNumber(backgroundsLength)]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [data, setData] = useState("");
+  const [background, setBackground] = useState("https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-1.2.1&auto=format&fit=crop&w=1615&q=80");
   const [countdown, setCountdown] = useState(false);
-  console.log(background);
-  
-  return (
-    <DisplaySection
-      bg={props.bg}
-      textColor={props.textColor}
-      size={props.size}
-      bgImage={background}
-      bgImageOpacity={"70%"}
-    >
-      <Container className="text-center">
-        <SectionHeader
-          title={quote}
-          size={1}
-          spaced={true}
-          giant={true}
-        />
 
-        <section className="d-flex flex-row justify-content-center align-content-center">
+  const getQuotes = useCallback(() => {
+    API.get(API_URL)
+      .then(data => {
+        setData(data.slip.advice);
+        setBackground(backgrounds[generateRandomNumber(26)]);
+      })
+      .then(() => {
+        window.setTimeout(setIsLoaded(true), 3000);
+        setCountdown(true);
+      })
+      .catch(error => console.log(error));
+  }, [])
 
-          <Button
-            className="p-1 m-0"
-            variant="lavender"
-            disabled={(countdown ? true : false)}
-            onClick={() => {
-              getQuotes();
-              //setIsLoaded(false);
-            }}
-          >
-            {countdown ? (
-              <CountdownCircleTimer
-                isPlaying
-                duration={8}
-                colors={[
-                  ['#fff', 0.33],
-                ]}
-                size={30}
-                strokeWidth={2}
-                onComplete={() => setCountdown(false)}
-              >
-                {({ remainingTime }) => remainingTime}
-              </CountdownCircleTimer>
-            ) : <p className="m-0 p-2">More pip and bean</p>}
-          </Button>
+  useEffect(() => {
+    getQuotes();
+  }, [getQuotes])
 
-        </section>
-      </Container>
-    </DisplaySection>
-  );
+
+  if (!isLoaded) {
+    return (
+      <section className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
+        <Spinner variant="lavender" animation="grow" role="status" style={{ height: "10vh", width: "10vh" }} />
+      </section>
+    )
+  }
+  else {
+    return (
+      <DisplaySection
+        height={props.height}
+        bg={props.bg}
+        textColor={props.textColor}
+        size={props.size}
+        bgImage={background}
+        bgImageOpacity={"50%"}
+      >
+        <Container className="text-center">
+          <SectionHeader
+            title={data}
+            size={1}
+            spaced={true}
+            giant={true}
+          />
+          <section className="d-flex flex-row justify-content-center align-content-center">
+            <Button
+              className="p-1 m-0"
+              variant={props.buttonColor}
+              disabled={(countdown ? true : false)}
+              onClick={() => {
+                getQuotes();
+                setIsLoaded(false);
+              }}
+            >
+              {countdown ? (
+                <CountdownCircleTimer
+                  isPlaying
+                  duration={5}
+                  colors={[
+                    ['#fff', 0.33],
+                  ]}
+                  size={30}
+                  strokeWidth={2}
+                  onComplete={() => setCountdown(false)}
+                >
+                  {({ remainingTime }) => remainingTime}
+                </CountdownCircleTimer>
+              ) : <p className="m-0 p-2">Generate new advice</p>}
+            </Button>
+          </section>
+        </Container>
+      </DisplaySection>
+    );
+  }
 }
 
 export default HeroSection;
