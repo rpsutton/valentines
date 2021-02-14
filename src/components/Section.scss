@@ -1,0 +1,17 @@
+.SectionComponent {
+  // Ensure container is above bgImage
+  .container {
+    position: relative;
+  }
+
+  // Add light border if two white
+  // sections next to each other.
+  .bg-white + &.bg-white {
+    border-top: 1px solid #F0F0F0;
+  }
+}
+
+.gradient {
+  background: linear-gradient(90deg, hsla(328, 75%, 45%, 1) 0%, hsla(269, 85%, 41%, 1) 100%);
+
+}
