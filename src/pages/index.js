@@ -1,5 +1,6 @@
 import React from "react";
 import AdviceDisplay from "./../components/AdviceDisplay";
+import HeroSection from './../components/HeroSection';
 import Footer from "./../components/Footer";
 
 function IndexPage(props) {
@@ -11,6 +12,11 @@ function IndexPage(props) {
         bg="pink"
         textColor="light"
         buttonColor="primary"
+      />
+      <HeroSection 
+        bg="pink"
+        textColor="light"
+        title="I love you baby!"
       />
       <Footer
         bg="lavender"
