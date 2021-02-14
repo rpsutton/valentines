@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import AdviceDisplay from "./../components/AdviceDisplay";
-import Footer from "./../components/Footer";
 
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
@@ -27,8 +26,6 @@ function useWindowDimensions() {
 
 function IndexPage(props) {
   const { height} = useWindowDimensions();
-  var dateObject = new Date();
-  var curentYear = dateObject.getFullYear();
   return (
     <>
       <AdviceDisplay
@@ -36,15 +33,6 @@ function IndexPage(props) {
         textColor="light"
         buttonColor="lavender"
         height={height}
-      />
-      <Footer
-        bg="lavender"
-        textColor="light"
-        size="sm"
-        bgImage=""
-        bgImageOpacity={1}
-        description="A short description of what you do here"
-        copyright={"© " + curentYear}
       />
     </>
   );
