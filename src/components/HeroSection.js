@@ -2,7 +2,6 @@ import React from "react";
 import Section from "./Section";
 import Container from "react-bootstrap/Container";
 import SectionHeader from "./SectionHeader";
-import Button from "react-bootstrap/Button";
 
 function HeroSection(props) {
   return (
