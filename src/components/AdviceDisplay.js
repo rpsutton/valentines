@@ -34,8 +34,8 @@ function HeroSection(props) {
 
   if (!isLoaded) {
     return (
-      <section className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
-        <Spinner variant="lavender" animation="grow" role="status" style={{ height: "10vh", width: "10vh" }} />
+      <section className="bg-pink d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
+        <Spinner variant="lavender" animation="border" role="status" style={{ height: "10vh", width: "10vh" }} />
       </section>
     )
   }
