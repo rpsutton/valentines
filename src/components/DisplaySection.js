@@ -18,7 +18,7 @@ function DisplaySection(props) {
     <section
         style={{height: props.height}}
         className={
-        "gradient SectionComponent py-5 position-relative d-flex justify-content-center align-items-center" +
+        "bg-pink SectionComponent py-5 position-relative d-flex justify-content-center align-items-center" +
         (props.textColor ? ` text-${props.textColor}` : "") +
         (className ? ` ${className}` : "")}
       {...otherProps}
