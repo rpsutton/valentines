@@ -39,7 +39,16 @@ const quotes = [
     "Love is the only reality and it is not a mere sentiment. It is the ultimate truth that lies at the heart of creation.",
     "There is always some madness in love. But there is also always some reason in madness.",
     "The meeting of two personalities is like the contact of two chemical substances: if there is any reaction, both are transformed.",
-    
+    "There’s only one thing more precious than our time and that’s who we spend it on",
+    "Love is composed of a single soul inhabiting two bodies.",
+    "I love you, and I will love you until I die, and if there’s a life after that, I’ll love you then",
+    "If I know what love is, it is because of you.",
+    "A relationship where you can be weird together is your best choice.",
+    "Your hand touching mine. This is how galaxies collide.",
+    "Happily ever after is not a fairy tale. It’s a choice.",
+    "Maybe you don’t need the whole world to love you. Maybe you just need one person.",
+    "True love stories never have endings.",
+    "Find someone who makes reality better than dreams and do your best to deserve them."
 
 ]
 
