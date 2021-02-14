@@ -16,6 +16,13 @@ const backgrounds = [
     require("../assets/15.jpeg"),
     require("../assets/16.jpeg"),
     require("../assets/17.jpeg"),
+    require("../assets/18.jpeg"),
+    require("../assets/19.jpeg"),
+    require("../assets/20.jpeg"),
+    require("../assets/21.jpeg"),
+    require("../assets/22.jpeg"),
+    require("../assets/23.jpeg"),
+    require("../assets/24.jpeg"),
 ]
 
 export {backgrounds};

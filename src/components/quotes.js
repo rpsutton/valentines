@@ -37,7 +37,9 @@ const quotes = [
     "For small creatures such as we the vastness is bearable only through love.",
     "The love we give away is the only love we keep.",
     "Love is the only reality and it is not a mere sentiment. It is the ultimate truth that lies at the heart of creation.",
-    "There is always some madness in love. But there is also always some reason in madness."
+    "There is always some madness in love. But there is also always some reason in madness.",
+    "The meeting of two personalities is like the contact of two chemical substances: if there is any reaction, both are transformed.",
+    
 
 ]
 
