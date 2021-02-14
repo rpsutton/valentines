@@ -1,32 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import AdviceDisplay from "./../components/AdviceDisplay";
 import Footer from "./../components/Footer";
 
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
-}
-
-function useWindowDimensions() {
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return windowDimensions;
-}
-
 function IndexPage(props) {
-  const { height } = useWindowDimensions();
   var dateObject = new Date();
   var curentYear = dateObject.getFullYear();
   return (
@@ -35,7 +11,6 @@ function IndexPage(props) {
         bg="pink"
         textColor="light"
         buttonColor="primary"
-        height={height}
       />
       <Footer
         bg="lavender"

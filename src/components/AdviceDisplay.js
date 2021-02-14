@@ -28,7 +28,6 @@ function HeroSection(props) {
   const [countdown, setCountdown] = useState(false);
   return (
     <DisplaySection
-      height={props.height}
       bg={props.bg}
       textColor={props.textColor}
       size={props.size}

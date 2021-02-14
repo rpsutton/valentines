@@ -16,7 +16,7 @@ function DisplaySection(props) {
 
   return (
     <section
-        style={{height: props.height}}
+        style={{minHeight: "100vh"}}
         className={
         "bg-pink SectionComponent py-5 position-relative d-flex justify-content-center align-items-center" +
         (props.textColor ? ` text-${props.textColor}` : "") +
