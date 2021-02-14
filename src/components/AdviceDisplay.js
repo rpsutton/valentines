@@ -4,16 +4,9 @@ import SectionHeader from "./SectionHeader";
 import Button from "react-bootstrap/Button";
 import DisplaySection from "./DisplaySection";
 import { backgrounds } from "../styles/backgrounds";
+import { quotes } from '../components/quotes';
 import Spinner from "react-bootstrap/Spinner";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-
-const API_URL = "https://api.adviceslip.com/advice";
-
-function get(url) {
-  return fetch(url)
-    .then(resp => resp.json())
-}
-const API = { get }
 
 function generateRandomNumber(num) {
   return Math.floor(Math.random() * Math.floor(num));
@@ -21,28 +14,23 @@ function generateRandomNumber(num) {
 
 function HeroSection(props) {
 
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [data, setData] = useState("");
-  const [background, setBackground] = useState("https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-1.2.1&auto=format&fit=crop&w=1615&q=80");
+  const [isLoaded, setIsLoaded] = useState(true);
+  const [data, setData] = useState(quotes[generateRandomNumber(quotes.length)]);
+  const [background, setBackground] = useState(backgrounds[generateRandomNumber(backgrounds.length)]);
   const [countdown, setCountdown] = useState(false);
 
-  const getQuotes = useCallback(() => {
-    API.get(API_URL)
-      .then(data => {
-        setData(data.slip.advice);
-        setBackground(backgrounds[generateRandomNumber(26)]);
-      })
-      .then(() => {
-        window.setTimeout(setIsLoaded(true), 3000);
-        setCountdown(true);
-      })
-      .catch(error => console.log(error));
-  }, [])
-
-  useEffect(() => {
-    getQuotes();
-  }, [getQuotes])
-
+ 
+  const getQuotes = () => {
+    
+    let background = backgrounds[generateRandomNumber(backgrounds.length)];
+    let quote = quotes[generateRandomNumber(quotes.length)];
+    console.log(quote);
+    setTimeout(() => {
+      setData(quote);
+      setBackground(background);
+      setIsLoaded(true);
+    }, 1200);
+  }
 
   if (!isLoaded) {
     return (
