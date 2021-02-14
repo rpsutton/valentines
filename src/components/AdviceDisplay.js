@@ -15,8 +15,8 @@ function generateRandomNumber(num) {
 function HeroSection(props) {
 
   const [isLoaded, setIsLoaded] = useState(true);
-  const [data, setData] = useState(quotes[generateRandomNumber(quotes.length)]);
-  const [background, setBackground] = useState(backgrounds[generateRandomNumber(backgrounds.length)]);
+  const [data, setData] = useState(quotes[generateRandomNumber(quotes.length-1)]);
+  const [background, setBackground] = useState(backgrounds[generateRandomNumber(backgrounds.length-1)]);
   const [countdown, setCountdown] = useState(false);
 
  
@@ -79,7 +79,7 @@ function HeroSection(props) {
                 >
                   {({ remainingTime }) => remainingTime}
                 </CountdownCircleTimer>
-              ) : <p className="m-0 p-2">Generate new advice</p>}
+              ) : <p className="m-0 p-2">More Pip and Bean</p>}
             </Button>
           </section>
         </Container>
